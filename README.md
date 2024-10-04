@@ -19,17 +19,7 @@ Product reviews
 2. Java
 
 ### Front Ends:
+1. Vue.JS
 
 ## External components:
 1. Stripe (for payment integrations)
-
-# Timeline
-
-## Sprint One
-Definition of project specifications, including features, project overview, and functional validation, as well as the goals for future sprints.
-
-## Sprint Two
-1. Develop a Database Schema to Store purchase orders, past purchases, active products, and user profiles
-2. Implement a webpage for registering users, and setting up user profiles.
-
-## Sprint Three
