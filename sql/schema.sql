@@ -30,6 +30,22 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: addresses; Type: TABLE; Schema: marketplace; Owner: cardinal
+--
+
+CREATE TABLE marketplace.addresses (
+    id uuid NOT NULL,
+    street character varying(40),
+    city text,
+    state text,
+    country character varying(2),
+    zip_code integer
+);
+
+
+ALTER TABLE marketplace.addresses OWNER TO cardinal;
+
+--
 -- Name: items; Type: TABLE; Schema: marketplace; Owner: cardinal
 --
 
@@ -71,6 +87,20 @@ CREATE TABLE marketplace.purchases (
 ALTER TABLE marketplace.purchases OWNER TO cardinal;
 
 --
+-- Name: shipments; Type: TABLE; Schema: marketplace; Owner: cardinal
+--
+
+CREATE TABLE marketplace.shipments (
+    id uuid NOT NULL,
+    purchase uuid,
+    address uuid,
+    tracking_number character varying(40)
+);
+
+
+ALTER TABLE marketplace.shipments OWNER TO cardinal;
+
+--
 -- Name: users; Type: TABLE; Schema: marketplace; Owner: cardinal
 --
 
@@ -83,6 +113,14 @@ CREATE TABLE marketplace.users (
 
 
 ALTER TABLE marketplace.users OWNER TO cardinal;
+
+--
+-- Data for Name: addresses; Type: TABLE DATA; Schema: marketplace; Owner: cardinal
+--
+
+COPY marketplace.addresses (id, street, city, state, country, zip_code) FROM stdin;
+\.
+
 
 --
 -- Data for Name: items; Type: TABLE DATA; Schema: marketplace; Owner: cardinal
@@ -109,11 +147,27 @@ COPY marketplace.purchases (id, date, purchaser) FROM stdin;
 
 
 --
+-- Data for Name: shipments; Type: TABLE DATA; Schema: marketplace; Owner: cardinal
+--
+
+COPY marketplace.shipments (id, purchase, address, tracking_number) FROM stdin;
+\.
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: marketplace; Owner: cardinal
 --
 
 COPY marketplace.users (id, email, create_date, password) FROM stdin;
 \.
+
+
+--
+-- Name: addresses addresses_pkey; Type: CONSTRAINT; Schema: marketplace; Owner: cardinal
+--
+
+ALTER TABLE ONLY marketplace.addresses
+    ADD CONSTRAINT addresses_pkey PRIMARY KEY (id);
 
 
 --
@@ -130,6 +184,14 @@ ALTER TABLE ONLY marketplace.items
 
 ALTER TABLE ONLY marketplace.purchases
     ADD CONSTRAINT purchase_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shipments shipment_pkey; Type: CONSTRAINT; Schema: marketplace; Owner: cardinal
+--
+
+ALTER TABLE ONLY marketplace.shipments
+    ADD CONSTRAINT shipment_pkey PRIMARY KEY (id);
 
 
 --
@@ -170,6 +232,22 @@ ALTER TABLE ONLY marketplace.purchaserel
 
 ALTER TABLE ONLY marketplace.purchases
     ADD CONSTRAINT purchase_purchaser_fkey FOREIGN KEY (purchaser) REFERENCES marketplace.users(id);
+
+
+--
+-- Name: shipments shipment_address_fkey; Type: FK CONSTRAINT; Schema: marketplace; Owner: cardinal
+--
+
+ALTER TABLE ONLY marketplace.shipments
+    ADD CONSTRAINT shipment_address_fkey FOREIGN KEY (address) REFERENCES marketplace.addresses(id);
+
+
+--
+-- Name: shipments shipment_purchase_fkey; Type: FK CONSTRAINT; Schema: marketplace; Owner: cardinal
+--
+
+ALTER TABLE ONLY marketplace.shipments
+    ADD CONSTRAINT shipment_purchase_fkey FOREIGN KEY (purchase) REFERENCES marketplace.purchases(id);
 
 
 --

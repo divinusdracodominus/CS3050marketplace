@@ -1,0 +1,1 @@
+insert into marketplace.users (id, email, password) values ();
