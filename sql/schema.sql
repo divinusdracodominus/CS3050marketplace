@@ -105,10 +105,12 @@ ALTER TABLE marketplace.shipments OWNER TO cardinal;
 --
 
 CREATE TABLE marketplace.users (
-    id uuid NOT NULL,
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
     email text NOT NULL,
     create_date timestamp without time zone DEFAULT now(),
-    password character varying(30)
+    password character varying(100),
+    fname text,
+    lname text
 );
 
 
@@ -158,7 +160,7 @@ COPY marketplace.shipments (id, purchase, address, tracking_number) FROM stdin;
 -- Data for Name: users; Type: TABLE DATA; Schema: marketplace; Owner: cardinal
 --
 
-COPY marketplace.users (id, email, create_date, password) FROM stdin;
+COPY marketplace.users (id, email, create_date, password, fname, lname) FROM stdin;
 \.
 
 
@@ -192,6 +194,14 @@ ALTER TABLE ONLY marketplace.purchases
 
 ALTER TABLE ONLY marketplace.shipments
     ADD CONSTRAINT shipment_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users unique_email; Type: CONSTRAINT; Schema: marketplace; Owner: cardinal
+--
+
+ALTER TABLE ONLY marketplace.users
+    ADD CONSTRAINT unique_email UNIQUE (email);
 
 
 --
