@@ -1,9 +1,6 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
+<script>
 export default {
-  name: 'Login',
+  name: "Login",
 }
 console.log("in Login page");
 </script>
@@ -14,8 +11,8 @@ console.log("in Login page");
     <input type="text" name="email" placeholder="email"/>
     <input type="password" name="password" placeholder="password"/>
     <input type="submit"/>
-</form>
   </div>
+</form>
 </template>
 
 <style scoped>

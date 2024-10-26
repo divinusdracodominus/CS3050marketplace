@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PostItem from '../views/PostItem.vue'
+import 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +10,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/postitem',
+      name: 'postitem',
+      component: PostItem,
     },
     {
       path: '/about',
@@ -20,4 +27,4 @@ const router = createRouter({
   ]
 })
 
-export default router
+export default router;

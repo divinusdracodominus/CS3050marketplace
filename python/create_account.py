@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 # Database connection parameters
 DB_HOST = 'localhost'
-DB_NAME = 'your_db_name'
-DB_USER = 'your_user'
-DB_PASSWORD = 'your_password'
+DB_NAME = 'marketplace'
+DB_USER = 'cardinal'
+DB_PASSWORD = 'password'
 
 # Initialize Argon2 Password Hasher
 ph = PasswordHasher()

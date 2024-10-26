@@ -1,0 +1,8 @@
+[31mx[39m Build failed in 22ms
+[31merror during build:
+[31mCould not resolve entry module "index.html".[31m
+    at getRollupError (file:///home/cardinal/cs3050marketplace/vue/marketplace/node_modules/rollup/dist/es/shared/parseAst.js:395:41)
+    at error (file:///home/cardinal/cs3050marketplace/vue/marketplace/node_modules/rollup/dist/es/shared/parseAst.js:391:42)
+    at ModuleLoader.loadEntryModule (file:///home/cardinal/cs3050marketplace/vue/marketplace/node_modules/rollup/dist/es/shared/node-entry.js:20027:20)
+    at async Promise.all (index 0)[39m
+ERROR: "build-only" exited with 1.
