@@ -1,26 +1,25 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/styles.less' // import LESS file
-import router from './router';
-import { createRouter, createWebHistory } from 'vue-router';
+import { createApp } from 'vue';
+import App from './App.vue';
 
-// Import your components
-import Home from './components/Home.vue';
-import Profile from './components/Profile.vue';
-import Login from './components/Login.vue';
+// Import global styles
+import './assets/styles.less';
 
-console.log("in router.js");
-const routes = [
-  { path: "/", name: "Home", component: Home },
-  { path: "/profile", component: Profile },
-  { path: '/login', name: "Login", component: Login },
-];
+// Import a UI library (e.g., Element Plus)
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+// Optional: Import Router and Store if used
+// import router from './router';
+// import store from './store';
 
-createApp(App)
-  .use(router)
-  .mount('#app')
+const app = createApp(App);
+
+// Use UI library
+app.use(ElementPlus);
+
+// Optional: Use router and store
+// app.use(router);
+// app.use(store);
+
+// Mount the app
+app.mount('#app');
